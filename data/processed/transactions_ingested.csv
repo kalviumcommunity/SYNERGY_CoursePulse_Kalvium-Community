@@ -1,0 +1,4 @@
+id,customer_id,amount,status
+1,1,100,completed
+2,2,250,pending
+3,1,150,completed

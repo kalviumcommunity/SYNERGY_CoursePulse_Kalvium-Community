@@ -1,0 +1,38 @@
+[
+  {
+    "event_id": "evt_2001",
+    "user_id": "usr_601",
+    "event_timestamp": "2025-02-02 09:10:00",
+    "event_type": "preview",
+    "course": {
+      "id": "CRS_101",
+      "name": "Full Stack Web Development",
+      "category": "Web Development"
+    },
+    "search_query": null
+  },
+  {
+    "event_id": "evt_2002",
+    "user_id": "usr_601",
+    "event_timestamp": "2025-02-02 09:15:00",
+    "event_type": "enrollment",
+    "course": {
+      "id": "CRS_101",
+      "name": "Full Stack Web Development",
+      "category": "Web Development"
+    },
+    "search_query": null
+  },
+  {
+    "event_id": "evt_2003",
+    "user_id": "usr_602",
+    "event_timestamp": "2025-02-02 10:00:00",
+    "event_type": "search",
+    "course": {
+      "id": null,
+      "name": null,
+      "category": null
+    },
+    "search_query": "deep learning"
+  }
+]
