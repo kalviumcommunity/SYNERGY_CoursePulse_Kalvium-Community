@@ -1,0 +1,11 @@
+customer_id,name,product,segment,location,email
+1, Alice Smith ,  Electronics ,b2b, São Paulo ,alice@example.com
+2,BOB JOHNSON, electronics ,B 2 B, Montréal ,bob@example.com
+3,carol white ,ELECTRONICS,b2 b, new york ,carol@example.com
+4, DAVE LEE ,  Mobile Phones ,sme, Buenos Aires ,dave@example.com
+5,eve martin, mobile phones ,small medium enterprise, nairobi ,eve@example.com
+6,  Frank Wu  , Mobile Phones  ,enterprise, Zürich ,frank@example.com
+7,Grace Kim,   Software   ,Enterprise, singapore ,grace@example.com
+8, HENRY FORD ,software,b2b,  London  ,henry@example.com
+9,ivan petrov ,  SOFTWARE ,B2B, Montréal ,ivan@example.com
+10, Julia ROss , Electronics ,sme, São Paulo ,julia@example.com
