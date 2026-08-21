@@ -1,0 +1,16 @@
+event_id,user_id,event_timestamp,event_type,course_id,course_name,category,search_query,hour_of_day,day_of_week,is_enrollment
+evt_1001,usr_501,2025-02-01 10:15:30,search,N/A,N/A,N/A,python full stack,10,Saturday,0
+evt_1002,usr_501,2025-02-01 10:16:05,preview,CRS_101,Full Stack Web Development,Web Development,N/A,10,Saturday,0
+evt_1003,usr_501,2025-02-01 10:18:22,enrollment,CRS_101,Full Stack Web Development,Web Development,N/A,10,Saturday,1
+evt_1004,usr_502,2025-02-01 11:05:10,search,N/A,N/A,N/A,data science machine learning,11,Saturday,0
+evt_1005,usr_502,2025-02-01 11:06:40,preview,CRS_201,Machine Learning Fundamentals,Data Science,N/A,11,Saturday,0
+evt_1006,usr_503,2025-02-01 12:30:15,search,N/A,N/A,N/A,react ui,12,Saturday,0
+evt_1007,usr_503,2025-02-01 12:31:00,preview,CRS_102,Advanced React & Next.js,Web Development,N/A,12,Saturday,0
+evt_1008,usr_504,2025-02-01 14:10:00,search,N/A,N/A,N/A,cloud aws,14,Saturday,0
+evt_1009,usr_504,2025-02-01 14:11:45,preview,CRS_301,AWS Cloud Solutions Architect,Cloud Computing,N/A,14,Saturday,0
+evt_1010,usr_504,2025-02-01 14:20:10,enrollment,CRS_301,AWS Cloud Solutions Architect,Cloud Computing,N/A,14,Saturday,1
+evt_1011,usr_505,2025-02-01 15:45:00,preview,CRS_201,Machine Learning Fundamentals,Data Science,N/A,15,Saturday,0
+evt_1012,usr_506,2025-02-01 16:00:20,preview,CRS_201,Machine Learning Fundamentals,Data Science,N/A,16,Saturday,0
+evt_1013,usr_507,2025-02-01 16:15:30,preview,CRS_201,Machine Learning Fundamentals,Data Science,N/A,16,Saturday,0
+evt_1014,usr_508,2025-02-01 17:00:10,search,N/A,N/A,N/A,system design,17,Saturday,0
+evt_1015,usr_508,2025-02-01 17:02:40,preview,CRS_401,Scalable System Design,Software Architecture,N/A,17,Saturday,0

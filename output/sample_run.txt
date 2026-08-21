@@ -1,0 +1,39 @@
+=======================================================
+  CoursePulse — Data Workflow Pipeline
+=======================================================
+  Input  : /Users/abhinavv/Documents/SEM-5/SW_Project 1/SYNERGY_CoursePulse_Kalvium-Community/data/raw/course_pulse_events.csv
+  Output : /Users/abhinavv/Documents/SEM-5/SW_Project 1/SYNERGY_CoursePulse_Kalvium-Community/output/processed.csv
+=======================================================
+[INGEST] ✓ Loaded '/Users/abhinavv/Documents/SEM-5/SW_Project 1/SYNERGY_CoursePulse_Kalvium-Community/data/raw/course_pulse_events.csv'
+         Rows: 15  |  Columns: 8
+         Columns: ['event_id', 'user_id', 'event_timestamp', 'event_type', 'course_id', 'course_name', 'category', 'search_query']
+
+[PROCESS] Starting transformations on 15 rows ...
+[PROCESS] Step 1 — Removed 0 duplicate row(s). Remaining: 15
+[PROCESS] Step 2 — Dropped 0 row(s) with null event_id.
+[PROCESS] Step 3 — Filled nulls in 'course_id' with 'N/A'.
+[PROCESS] Step 3 — Filled nulls in 'course_name' with 'N/A'.
+[PROCESS] Step 3 — Filled nulls in 'category' with 'N/A'.
+[PROCESS] Step 3 — Filled nulls in 'search_query' with 'N/A'.
+[PROCESS] Step 4 — Parsed 'event_timestamp' → datetime64.
+[PROCESS] Step 5 — Extracted 'hour_of_day' and 'day_of_week'.
+[PROCESS] Step 6 — Flagged 2 enrollment event(s) ('is_enrollment' column added).
+[PROCESS] ✓ Transformations complete. Final shape: 15 rows × 11 columns.
+
+=======================================================
+  PIPELINE EXECUTION SUMMARY
+=======================================================
+  ✓ Data successfully processed
+  ✓ Rows processed    : 15
+  ✓ Columns output    : 11
+  ✓ Output saved to   : /Users/abhinavv/Documents/SEM-5/SW_Project 1/SYNERGY_CoursePulse_Kalvium-Community/output/processed.csv
+
+  Event-Type Breakdown:
+    preview     : 8
+    search      : 5
+    enrollment  : 2
+
+  Enrollment events   : 2
+=======================================================
+  ✓ Pipeline complete — no errors.
+=======================================================
