@@ -1,0 +1,75 @@
+{
+  "pipeline_run": "2026-08-21T15:09:21.647636",
+  "source_file": "data/raw/missing_data.csv",
+  "decisions": {
+    "customer_id": {
+      "column_type": "identifier",
+      "null_count_before": 0,
+      "null_count_after": 0,
+      "strategy": "drop_rows",
+      "rows_affected": 0,
+      "business_reasoning": "customer_id is the primary key linking all records to a CRM entity. A row without it cannot be attributed to any customer, making it useless for any downstream aggregation, segmentation, or modelling.",
+      "risk_assessment": "Low \u2014 affects a small % of rows; data loss is acceptable"
+    },
+    "email": {
+      "column_type": "categorical_identifier",
+      "null_count_before": 2,
+      "null_count_after": 0,
+      "strategy": "drop_rows",
+      "rows_affected": 2,
+      "business_reasoning": "Email is required for all outreach, marketing, and CRM contact workflows. Imputing a fake email would send communications to the wrong address. Rows without email cannot participate in any customer-facing campaign.",
+      "risk_assessment": "Low \u2014 only affects rows already unusable for outreach"
+    },
+    "amount": {
+      "column_type": "numerical",
+      "null_count_before": 2,
+      "null_count_after": 0,
+      "strategy": "median_imputation",
+      "value_used": 225.0,
+      "business_reasoning": "Transaction amount is required for revenue calculations. Median is preferred over mean because high-value outlier transactions would skew the mean upward, overestimating the typical purchase value. Median is stable and representative of the central transaction size.",
+      "risk_assessment": "Low \u2014 median is resistant to outliers; distribution integrity maintained"
+    },
+    "quantity": {
+      "column_type": "numerical",
+      "null_count_before": 2,
+      "null_count_after": 0,
+      "strategy": "median_imputation",
+      "value_used": 2.5,
+      "business_reasoning": "Quantity is needed for unit-economics analysis. Median fill prevents a handful of bulk orders from inflating the fill value.",
+      "risk_assessment": "Low \u2014 integer column; median rounds to nearest whole number"
+    },
+    "category": {
+      "column_type": "categorical",
+      "null_count_before": 1,
+      "null_count_after": 0,
+      "strategy": "mode_imputation",
+      "value_used": "A",
+      "business_reasoning": "Category drives product segmentation reporting. Mode fill uses the most common category, preserving the existing distribution without introducing values that do not appear organically in the data.",
+      "risk_assessment": "Medium \u2014 if mode is unrepresentative, segment metrics may shift slightly"
+    },
+    "region": {
+      "column_type": "categorical",
+      "null_count_before": 2,
+      "null_count_after": 0,
+      "strategy": "mode_imputation",
+      "value_used": "East",
+      "business_reasoning": "Region is used for geographic revenue segmentation. Mode fill assigns the most common region, which is a reasonable default when geographic data is missing from the source system.",
+      "risk_assessment": "Medium \u2014 geographic attribution may be incorrect for edge cases"
+    },
+    "last_updated": {
+      "column_type": "datetime_series",
+      "null_count_before": 2,
+      "null_count_after": 0,
+      "strategy": "forward_fill",
+      "interpretation": "Carries forward the most recent known timestamp",
+      "business_reasoning": "last_updated is a slowly-changing temporal field. Forward fill preserves temporal continuity \u2014 the last known date is the best estimate for when a gap record was last updated, since status fields typically change infrequently between observations.",
+      "risk_assessment": "Medium \u2014 assumes no change occurred between the last known and gap records"
+    }
+  },
+  "summary": {
+    "total_nulls_before": 13,
+    "total_nulls_after": 2,
+    "rows_before": 10,
+    "rows_after": 8
+  }
+}
