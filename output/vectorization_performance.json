@@ -1,0 +1,43 @@
+{
+  "n_rows_processed": 1000000,
+  "columns_added": [
+    "revenue_normalized",
+    "revenue_zscore",
+    "revenue_rank"
+  ],
+  "shape": [
+    1000000,
+    8
+  ],
+  "dtypes": {
+    "customer_id": "int64",
+    "name": "str",
+    "revenue": "float64",
+    "age": "int16",
+    "transactions": "int16",
+    "revenue_normalized": "float64",
+    "revenue_zscore": "float64",
+    "revenue_rank": "int64"
+  },
+  "revenue_normalized": {
+    "min": 0.0,
+    "max": 1.0,
+    "mean": 0.06960242062157619
+  },
+  "revenue_zscore": {
+    "min": -1.5710784784786578,
+    "max": 21.001103127395492,
+    "mean": -1.1974066183029208e-16,
+    "std": 1.0
+  },
+  "performance": {
+    "n_rows": 1000000,
+    "operation": "revenue * 1.1",
+    "loop_time_s": 0.046405,
+    "numpy_time_s": 0.000574,
+    "speedup": 80.8,
+    "results_match": true
+  },
+  "sample_path": "data/processed/revenue_vectorized_sample.csv",
+  "sample_rows": 5000
+}
