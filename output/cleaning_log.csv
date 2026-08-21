@@ -1,0 +1,4 @@
+column,method,action,threshold_lower,threshold_upper,affected_rows,business_reasoning,date
+revenue,Z-score,flag,-3.0,3.0,1,Values beyond ±3 std devs are statistically extreme. Flagged for review — not removed as they may be valid high-value customers.,2026-08-21T15:29:38.208242
+revenue,IQR,cap,87.6562,607.4062,2,IQR capping (Winsorisation) preserves row count while constraining extreme values to fence boundaries. Preferred over deletion for small datasets.,2026-08-21T15:29:38.208540
+age,domain_rule,flag,0.0,120.0,1,Age > 120 is biologically impossible. Flagged as data entry error. Recommend correction from source system before analysis.,2026-08-21T15:29:38.208586
