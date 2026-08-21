@@ -1,0 +1,93 @@
+{
+  "dataset": "/Users/abhinavv/Documents/SEM-5/SW_Project 1/SYNERGY_CoursePulse_Kalvium-Community/data/raw/quality_test.csv",
+  "record_count": 5,
+  "column_count": 5,
+  "columns": [
+    "customer_id",
+    "name",
+    "email",
+    "amount",
+    "status"
+  ],
+  "nulls_and_duplicates": {
+    "null_counts": {
+      "customer_id": 0,
+      "name": 1,
+      "email": 2,
+      "amount": 1,
+      "status": 0
+    },
+    "null_percentages": {
+      "customer_id": 0.0,
+      "name": 20.0,
+      "email": 40.0,
+      "amount": 20.0,
+      "status": 0.0
+    },
+    "exact_duplicate_count": 0,
+    "duplicate_percentage": 0.0
+  },
+  "numerical_stats": {
+    "min": {
+      "customer_id": 1.0,
+      "amount": 100.0
+    },
+    "max": {
+      "customer_id": 5.0,
+      "amount": 500.0
+    },
+    "mean": {
+      "customer_id": 3.0,
+      "amount": 237.5
+    },
+    "median": {
+      "customer_id": 3.0,
+      "amount": 175.0
+    },
+    "std": {
+      "customer_id": 1.58,
+      "amount": 188.75
+    },
+    "null_count": {
+      "customer_id": 0.0,
+      "amount": 1.0
+    }
+  },
+  "categorical_stats": {
+    "name": {
+      "unique_count": 3,
+      "top_values": {
+        "Alice": 2,
+        "Bob": 1,
+        "Diana": 1
+      },
+      "null_count": 1
+    },
+    "email": {
+      "unique_count": 2,
+      "top_values": {
+        "alice@example.com": 2,
+        "charlie@example.com": 1
+      },
+      "null_count": 2
+    },
+    "status": {
+      "unique_count": 3,
+      "top_values": {
+        "active": 3,
+        "inactive": 1,
+        "-50": 1
+      },
+      "null_count": 0
+    }
+  },
+  "quality_issues": [
+    {
+      "type": "High nulls",
+      "column": "email",
+      "severity": "HIGH",
+      "value": "40.0% missing",
+      "recommendation": "Consider imputation or column exclusion"
+    }
+  ]
+}

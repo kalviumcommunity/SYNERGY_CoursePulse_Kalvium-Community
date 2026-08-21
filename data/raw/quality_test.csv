@@ -1,0 +1,6 @@
+customer_id,name,email,amount,status
+1,Alice,alice@example.com,100,active
+2,Bob,,250,active
+3,Alice,alice@example.com,100,active
+4,,charlie@example.com,500,inactive
+5,Diana,,,-50
