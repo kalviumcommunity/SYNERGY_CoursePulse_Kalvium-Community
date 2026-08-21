@@ -1,0 +1,37 @@
+{
+  "total_customers_processed": 500,
+  "engineered_features": [
+    "transactions_per_month",
+    "avg_spend_per_transaction",
+    "lifetime_value_per_month",
+    "engagement_tier",
+    "spend_quartile",
+    "rfm_score"
+  ],
+  "rfm_score_stats": {
+    "min": 3,
+    "max": 15,
+    "mean": 9.0,
+    "median": 9.0
+  },
+  "engagement_tier_breakdown": {
+    "low": 389,
+    "medium": 103,
+    "high": 8
+  },
+  "spend_quartile_breakdown": {
+    "Q1": 125,
+    "Q2": 125,
+    "Q3": 125,
+    "Q4": 125
+  },
+  "missing_value_check": {
+    "transactions_per_month": 0,
+    "avg_spend_per_transaction": 0,
+    "lifetime_value_per_month": 0,
+    "engagement_tier": 0,
+    "spend_quartile": 0,
+    "rfm_score": 0
+  },
+  "validation_status": "PASS"
+}
