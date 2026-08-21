@@ -1,0 +1,6 @@
+transaction_date,signup_date,amount,revenue,is_active,is_premium
+2025-01-15,2024-01-01,150.5,1200.0,True,False
+2025-02-20,2024-02-15,200.0,2500.5,False,True
+2025-03-10,2024-03-01,75.25,800.75,True,True
+2025-04-05,2024-04-10,320.0,3100.0,True,False
+2025-05-18,2024-05-22,95.99,950.0,False,False
