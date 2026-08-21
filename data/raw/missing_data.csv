@@ -1,0 +1,11 @@
+customer_id,name,email,amount,quantity,category,region,last_updated
+1,Alice,alice@example.com,100.0,3,A,North,2025-01-10
+2,Bob,,250.0,1,B,South,2025-01-11
+3,Carol,carol@example.com,,2,A,,2025-01-12
+4,,charlie@example.com,500.0,,C,East,2025-01-13
+5,Diana,,200.0,4,B,South,
+6,Eve,eve@example.com,175.0,2,,West,2025-01-15
+7,Frank,frank@example.com,,3,C,,
+8,Grace,grace@example.com,320.0,5,A,North,2025-01-17
+9,,heidi@example.com,90.0,1,B,East,2025-01-18
+10,Ivan,ivan@example.com,410.0,,C,West,2025-01-19

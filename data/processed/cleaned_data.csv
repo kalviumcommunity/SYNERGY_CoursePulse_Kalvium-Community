@@ -1,0 +1,9 @@
+customer_id,name,email,amount,quantity,category,region,last_updated
+1,Alice,alice@example.com,100.0,3.0,A,North,2025-01-10
+3,Carol,carol@example.com,247.5,2.0,A,East,2025-01-12
+4,,charlie@example.com,500.0,2.5,C,East,2025-01-13
+6,Eve,eve@example.com,175.0,2.0,A,West,2025-01-15
+7,Frank,frank@example.com,247.5,3.0,C,East,2025-01-15
+8,Grace,grace@example.com,320.0,5.0,A,North,2025-01-17
+9,,heidi@example.com,90.0,1.0,B,East,2025-01-18
+10,Ivan,ivan@example.com,410.0,2.5,C,West,2025-01-19
