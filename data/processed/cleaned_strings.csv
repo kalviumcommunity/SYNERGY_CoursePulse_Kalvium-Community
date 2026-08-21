@@ -1,0 +1,11 @@
+customer_id,name,product,segment,location,email
+1,alice smith,Electronics,B2B,so paulo,alice@example.com
+2,bob johnson,Electronics,B2B,montral,bob@example.com
+3,carol white,Electronics,B2B,new york,carol@example.com
+4,dave lee,Mobile Phones,SMB,buenos aires,dave@example.com
+5,eve martin,Mobile Phones,SMB,nairobi,eve@example.com
+6,frank wu,Mobile Phones,Enterprise,zrich,frank@example.com
+7,grace kim,Software,Enterprise,singapore,grace@example.com
+8,henry ford,Software,B2B,london,henry@example.com
+9,ivan petrov,Software,B2B,montral,ivan@example.com
+10,julia ross,Electronics,SMB,so paulo,julia@example.com
