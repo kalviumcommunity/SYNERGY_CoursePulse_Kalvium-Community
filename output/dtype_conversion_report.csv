@@ -1,0 +1,7 @@
+column,dtype_before,dtype_after,changed
+transaction_date,str,datetime64[us],True
+signup_date,str,datetime64[us],True
+amount,str,float64,True
+revenue,str,float64,True
+is_active,int64,bool,True
+is_premium,int64,bool,True
