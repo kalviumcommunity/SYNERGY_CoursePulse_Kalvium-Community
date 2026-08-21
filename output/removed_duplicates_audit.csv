@@ -1,0 +1,3 @@
+customer_id,transaction_date,amount,status,email
+3,2025-02-01,175,completed,carol@example.com
+4,2025-02-10,320,,dave@example.com
