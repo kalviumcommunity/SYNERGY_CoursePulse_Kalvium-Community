@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-08-21T14:39:20.829570",
+  "filepath": "/Users/abhinavv/Documents/SEM-5/SW_Project 1/SYNERGY_CoursePulse_Kalvium-Community/data/raw/sample.csv",
+  "validations": {
+    "file_exists": {
+      "status": "PASS",
+      "message": "File exists and has content"
+    },
+    "format": {
+      "status": "PASS",
+      "message": "Format valid: csv"
+    },
+    "schema": {
+      "status": "PASS",
+      "message": "Schema valid: 4 columns present"
+    },
+    "encoding": {
+      "status": "PASS",
+      "message": "Detected: ascii (confidence: 100.0%)",
+      "detected_encoding": "ascii"
+    }
+  },
+  "statistics": {
+    "rows": 3,
+    "columns": 4,
+    "file_size_mb": 0.0001,
+    "bytes": 157
+  },
+  "overall_status": "PASS"
+}
