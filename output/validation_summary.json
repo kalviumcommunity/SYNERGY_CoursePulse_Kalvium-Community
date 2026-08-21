@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-08-21T15:32:15.633892",
+  "total_records": 10,
+  "passed_records": 2,
+  "failed_records": 8,
+  "overall_pass_rate_pct": 20.0,
+  "rules_evaluated": 8,
+  "rule_breakdown": {
+    "valid_age": {
+      "invalid_count": 1,
+      "pass_rate_pct": 90.0
+    },
+    "valid_price": {
+      "invalid_count": 1,
+      "pass_rate_pct": 90.0
+    },
+    "valid_date": {
+      "invalid_count": 1,
+      "pass_rate_pct": 90.0
+    },
+    "valid_customer_id": {
+      "invalid_count": 1,
+      "pass_rate_pct": 90.0
+    },
+    "valid_email": {
+      "invalid_count": 1,
+      "pass_rate_pct": 90.0
+    },
+    "valid_email_format": {
+      "invalid_count": 2,
+      "pass_rate_pct": 80.0
+    },
+    "valid_phone": {
+      "invalid_count": 1,
+      "pass_rate_pct": 90.0
+    },
+    "valid_date_order": {
+      "invalid_count": 1,
+      "pass_rate_pct": 90.0
+    }
+  }
+}
