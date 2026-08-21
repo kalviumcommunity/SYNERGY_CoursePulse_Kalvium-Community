@@ -1,0 +1,14 @@
+{
+  "join_type": "left",
+  "left_table": "customers",
+  "right_table": "orders",
+  "join_key": "customer_id",
+  "left_rows": 1000,
+  "right_rows": 5000,
+  "result_rows": 5059,
+  "unmatched_left": 109,
+  "unmatched_right": 50,
+  "reasoning": "Left join preserves all customers; unmatched customers have no orders",
+  "business_context": "A left join was selected because our analysis goals require evaluating the entire customer population (including newly registered users with 0 orders). Using an inner join would introduce survival bias by omitting non-purchasing customers.",
+  "orphan_handling_policy": "Orphaned orders (50 records) were logged to output/unmatched_orders.csv for data engineering investigation. They were excluded from customer metrics to avoid corrupting customer-level aggregations."
+}
