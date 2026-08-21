@@ -1,0 +1,9 @@
+customer_id,name,age,price,birth_date,email,phone,start_date,end_date,valid_age,valid_price,valid_date,valid_customer_id,valid_email,valid_email_format,valid_phone,valid_date_order,passes_all_checks
+102.0,Bob Jones,34,-45.5,1990-03-22,bob@example.com,9876543210,2025-01-10,2025-01-20,True,False,True,True,True,True,True,True,False
+103.0,Carol White,42,200.0,2050-08-12,carol@example.com,5551234567,2025-02-01,2025-02-15,True,True,False,True,True,True,True,True,False
+,Dave Brown,29,75.0,1995-11-03,dave@example.com,8889990000,2025-02-05,2025-02-10,True,True,True,False,True,True,True,True,False
+105.0,Eve Davis,160,320.0,1964-07-19,eve@example.com,7778889999,2025-02-10,2025-02-25,False,True,True,True,True,True,True,True,False
+106.0,Frank Miller,38,180.0,1986-09-08,frank_example.com,1112223333,2025-03-01,2025-03-15,True,True,True,True,True,False,True,True,False
+107.0,Grace Wilson,45,220.0,1979-01-30,,4445556666,2025-03-05,2025-03-20,True,True,True,True,False,False,True,True,False
+108.0,Henry Taylor,31,90.0,1993-04-12,henry@example.com,12345,2025-03-10,2025-03-18,True,True,True,True,True,True,False,True,False
+109.0,Ivan Clark,52,410.0,1972-12-05,ivan@example.com,9990001111,2025-04-15,2025-04-01,True,True,True,True,True,True,True,False,False

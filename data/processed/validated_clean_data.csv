@@ -1,0 +1,3 @@
+customer_id,name,age,price,birth_date,email,phone,start_date,end_date,valid_age,valid_price,valid_date,valid_customer_id,valid_email,valid_email_format,valid_phone,valid_date_order,passes_all_checks
+101.0,Alice Smith,28,150.0,1996-05-14,alice@example.com,1234567890,2025-01-01,2025-01-15,True,True,True,True,True,True,True,True,True
+110.0,Julia Adams,26,130.0,1998-06-25,julia@example.com,3334445555,2025-04-01,2025-04-20,True,True,True,True,True,True,True,True,True
