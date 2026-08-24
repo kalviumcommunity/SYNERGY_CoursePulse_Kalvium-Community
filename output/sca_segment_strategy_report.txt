@@ -5,14 +5,14 @@
 +====================================================================+
 
 ENTERPRISE  — 150 customers  (5% of base)
-  Avg LTV        : $   143,718   |  Churn Rate  : 0.0%
-  Avg Retention  : 912 days         |  Avg Tickets : 1.02
-  Revenue share  : 62.5%
+  Avg LTV        : $   150,139   |  Churn Rate  : 1.3%
+  Avg Retention  : 907 days         |  Avg Tickets : 0.95
+  Revenue share  : 63.9%
 
   Observation: Enterprise is the highest-value, lowest-churn segment, averaging
-  $143,718 LTV and retaining customers for 912 days on average.
+  $150,139 LTV and retaining customers for 907 days on average.
   Despite being only 5% of the customer base, they represent
-  62.5% of total estimated revenue.
+  63.9% of total estimated revenue.
 
   Action: Maintain premium support (low ticket volume is a feature, not an accident).
   Invest in dedicated Customer Success Managers. Run quarterly Executive Business
@@ -21,12 +21,12 @@ ENTERPRISE  — 150 customers  (5% of base)
 ----------------------------------------------------------------------
 
 SMB  — 1,200 customers  (40% of base)
-  Avg LTV        : $     8,088   |  Churn Rate  : 12.7%
-  Avg Retention  : 422 days         |  Avg Tickets : 6.05
-  Revenue share  : 28.1%
+  Avg LTV        : $     7,831   |  Churn Rate  : 10.9%
+  Avg Retention  : 420 days         |  Avg Tickets : 5.95
+  Revenue share  : 26.7%
 
-  Observation: SMB has the HIGHEST churn at 12.7% and the most support
-  tickets (6.05/customer), signalling friction in onboarding or product fit.
+  Observation: SMB has the HIGHEST churn at 10.9% and the most support
+  tickets (5.95/customer), signalling friction in onboarding or product fit.
   Retaining even 2% more of this segment would add significant revenue given
   their 40% share of the customer base.
 
@@ -38,13 +38,13 @@ SMB  — 1,200 customers  (40% of base)
 ----------------------------------------------------------------------
 
 STARTUP  — 1,650 customers  (55% of base)
-  Avg LTV        : $     1,970    |  Churn Rate  : 7.5%
-  Avg Retention  : 280 days         |  Avg Tickets : 3.91
+  Avg LTV        : $     2,011    |  Churn Rate  : 7.5%
+  Avg Retention  : 278 days         |  Avg Tickets : 4.04
   Revenue share  : 9.4%
 
   Observation: Startups are the largest segment (55% of users) but
-  generate the lowest LTV ($1,970) with a moderate 8% churn rate.
-  They retain for only 280 days on average — often outgrowing or abandoning
+  generate the lowest LTV ($2,011) with a moderate 8% churn rate.
+  They retain for only 278 days on average — often outgrowing or abandoning
   before hitting a billing event.
 
   Action: Shift to self-service and education-first motions — tutorials, certification
@@ -55,9 +55,9 @@ STARTUP  — 1,650 customers  (55% of base)
 ----------------------------------------------------------------------
 
 KEY TAKEAWAY:
-  Aggregate churn = 9.2%  (masks all three problems)
-  Fixing SMB churn alone (even halving it to 6.3%) would improve
-  overall churn to ~6.7%
+  Aggregate churn = 8.6%  (masks all three problems)
+  Fixing SMB churn alone (even halving it to 5.5%) would improve
+  overall churn to ~6.4%
   — a bigger win than any product feature for the quarter.
 
 +====================================================================+
