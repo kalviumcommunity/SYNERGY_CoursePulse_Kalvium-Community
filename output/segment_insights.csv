@@ -1,0 +1,4 @@
+segment,customer_count,churn_rate,total_revenue,revenue_contribution,avg_support_tickets,churn_rank,action
+Enterprise,100,1.0%,"$1,185,883",38.3%,1.12,1,Healthy. Maintain current service level. Focus on upsell and expansion revenue.
+SMB,800,12.0%,"$1,446,069",46.8%,1.16,3,"HIGH PRIORITY: Churn above 10%. Investigate pain points, offer targeted retention discounts, review onboarding."
+Startup,1100,7.1%,"$460,642",14.9%,0.96,2,Monitor. Churn within acceptable range. Run quarterly NPS surveys and watch for uptick.
