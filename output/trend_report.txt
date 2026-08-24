@@ -1,0 +1,37 @@
+
++------------------------------------------------------------------+
+|              TREND ANALYSIS REPORT - CoursePulse                 |
+|         Member 2: Sreedhil Pavishanker B (Data Analyst)          |
++------------------------------------------------------------------+
+
+ROLLING AVERAGE TREND (last 30 days of MA30)
+  Direction          : UP
+  MA30 start         : $ 13,159.08
+  MA30 end           : $ 13,353.07
+  Change magnitude   :       +1.5%
+  MA7 slope (14 days): $    +18.93/day
+
+MONTHLY METRICS
+  Last MoM change    :       +4.3%
+  Growth months      :         15
+  Decline months     :          8
+  Longest growth run :          5 consecutive months
+  MoM Pattern        : ACCELERATING — more growth months than decline months.
+
+VOLATILITY (Noise Measurement)
+  Daily Std Dev      : $     2,680
+  Coefficient of Var :       24.8%
+  Interpretation     : High noise - rolling avg essential to read trend
+
+OVERALL SIGNAL       : ACCELERATING GROWTH
+
+BUSINESS IMPLICATIONS:
+  Maintain current acquisition & retention strategy. Scale marketing spend — ROI is positive. Plan capacity for continued demand increase.
+
+RECOMMENDED ACTIONS:
+  1. Use 30-day rolling avg (not raw daily) for all executive dashboards.
+  2. Flag any week where raw revenue deviates >2x std from MA7.
+  3. Set automated alert when MA30 declines for 3 consecutive weeks.
+  4. Segment trend analysis by customer_type (Enterprise vs SMB vs Startup).
+  5. Re-run this analysis monthly and compare to baseline quarter.
++------------------------------------------------------------------+
