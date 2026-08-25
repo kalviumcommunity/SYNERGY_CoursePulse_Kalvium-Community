@@ -1,17 +1,17 @@
 
 SEGMENT STRATEGY SUMMARY:
 
-Enterprise (5% of base, $148,810 LTV, 1% churn):
-- Highest value, lowest churn. Averaging $148,810 LTV with only
-  0.7% churn and 877 days average retention.
+Enterprise (5% of base, $145,605 LTV, 0% churn):
+- Highest value, lowest churn. Averaging $145,605 LTV with only
+  0.0% churn and 886 days average retention.
 - Despite being only 5% of the customer base, they represent
   ~63% of total estimated revenue.
 - Action: Maintain premium support (low ticket volume is intentional).
   Invest in dedicated Customer Success Managers; run quarterly Executive
   Business Reviews to lock in multi-year contracts and grow expansion revenue.
 
-SMB (40% of base, $8,073 LTV, 13% churn):
-- Middle value, high churn risk. SMB has the HIGHEST churn at 12.6%
+SMB (40% of base, $7,983 LTV, 12% churn):
+- Middle value, high churn risk. SMB has the HIGHEST churn at 11.8%
   with the most support tickets (6/customer), signalling friction
   in onboarding or product fit.
 - Retaining even 2% more of this segment would add significant revenue given
@@ -20,10 +20,10 @@ SMB (40% of base, $8,073 LTV, 13% churn):
   tier. Set automated churn-risk alerts at day 60 and 120 post sign-up and
   trigger proactive outreach before cancellation.
 
-Startup (55% of base, $1,986 LTV, 8% churn):
+Startup (55% of base, $1,991 LTV, 8% churn):
 - Lowest value, moderate churn. Startups are the largest segment
-  (55% of users) but generate the lowest LTV ($1,986)
-  with a 8.3% churn rate; they retain only 280 days on average.
+  (55% of users) but generate the lowest LTV ($1,991)
+  with a 8.1% churn rate; they retain only 280 days on average.
 - Action: Self-service and education-focused motion — tutorials, certification
   paths, and community resources that add value without adding support costs.
   Introduce usage-based pricing to monetise growth, and identify high-engagement
