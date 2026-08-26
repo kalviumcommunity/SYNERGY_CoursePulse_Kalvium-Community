@@ -1,0 +1,56 @@
+FUNNEL DROP-OFF ANALYSIS — STRATEGY REPORT
+Member 2: Sreedhil Pavishanker B (Data Analyst)
+======================================================================
+
+FUNNEL OVERVIEW
+  Sign Up             : 10,000
+  Email Entered       :  8,000
+  Password Created    :  6,000
+  Email Verified      :  5,000
+  Payment Added       :  4,000
+  First Purchase      :  2,000
+
+
+FUNNEL OPTIMIZATION PRIORITY:
+
+CRITICAL BOTTLENECK:
+Stage: Sign Up -> Email Entered
+Users Lost: 2,000
+Drop Rate: 20.0%
+Revenue Impact: $200,000
+
+ROOT CAUSE INVESTIGATION NEEDED:
+- Is step unclear? (Poor UX)
+- Is step too complex? (Too many fields)
+- Is step optional? (Should be required)
+- Is step timing wrong? (Too early/late in funnel)
+
+RECOMMENDED ACTION:
+1. A/B test simplified version of step
+2. Monitor drop rate before/after
+3. Estimate revenue recovery
+4. Roll out to 100% if improvement > 5%
+
+EXPECTED IMPACT:
+If we improve Sign Up -> Email Entered completion by 10%:
+Additional conversions: 200
+Additional revenue: $20,000
+
+
+PER-STAGE RECOMMENDATIONS
+----------------------------------------------------------------------
+
+[Sign Up -> Email Entered]
+20% of visitors abandon before entering an email. Hypothesis: form is too long or asks for information too early. Action: reduce the initial sign-up form to email-only, gate extra fields behind step 2.
+
+[Email Entered -> Password Created]
+25% drop between email and password. Hypothesis: password policy is too strict or confusing. Action: show password strength meter in real-time and allow social/SSO login as an alternative.
+
+[Password Created -> Email Verified]
+17% drop at email verification. Hypothesis: verification email lands in spam or takes too long. Action: send instant, branded verification email; add 'resend' button prominently; consider magic-link login instead.
+
+[Email Verified -> Payment Added]
+20% drop before adding payment. Hypothesis: asking for payment too early creates friction/distrust. Action: offer a 7-day free trial before requiring payment; add trust signals (SSL badge, money-back guarantee) near the form.
+
+[Payment Added -> First Purchase]
+50% drop — the LARGEST revenue leak. Hypothesis: users added payment but never found a reason to buy, OR checkout UX has errors/hidden costs. Action: trigger personalised onboarding email sequence within 1 hour of payment addition; add 'complete your first order' nudge in-app; A/B test removing friction from the checkout page.
