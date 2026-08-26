@@ -8,61 +8,66 @@ Columns : ['customer_id', 'customer_type', 'lifetime_value', 'churn', 'support_t
 
 Dataset head:
 customer_id customer_type  lifetime_value  churn  support_tickets  retention_days  monthly_revenue
- CUST_00001    Enterprise       165551.18      0                0            1112          1175.21
- CUST_00002    Enterprise       164121.29      0                2             807          2386.46
- CUST_00003    Enterprise       170674.97      0                2             947          9339.31
- CUST_00004    Enterprise       135738.58      0                0             678          2585.82
- CUST_00005    Enterprise       134768.84      0                0             908          3916.20
- CUST_00006    Enterprise       163511.54      0                0            1053          8743.03
+ CUST_00001    Enterprise       128533.53      0                1             747          9501.46
+ CUST_00002    Enterprise       139855.60      0                1             731          3487.65
+ CUST_00003    Enterprise       136041.95      0                1             790         11288.63
+ CUST_00004    Enterprise       169757.62      0                2             881         10195.26
+ CUST_00005    Enterprise       123344.46      0                0             750         11574.32
+ CUST_00006    Enterprise       118797.22      0                2            1059         10143.21
 
-Aggregate (misleading) churn rate: 9.2%
+Aggregate (misleading) churn rate: 9.1%
 
 ------------------------------------------------------------
 TASK 1: Define Segments & Compute Metrics
 ------------------------------------------------------------
 
-Raw segment_metrics (groupby output):
-                 avg_ltv  churn_rate  avg_tickets  avg_retention  avg_monthly_rev  count
-customer_type                                                                           
-Enterprise     143717.64        0.00         1.02         911.95          6093.31    150
-SMB              8087.58        0.13         6.05         421.80           338.06   1200
-Startup          1970.12        0.08         3.91         280.50            82.72   1650
+segment_metrics (groupby output):
+                 avg_ltv  churn_rate  avg_tickets  avg_retention  count
+customer_type                                                          
+Enterprise     145605.31        0.00         1.03         885.82    150
+SMB              7983.28        0.12         5.97         415.24   1200
+Startup          1990.90        0.08         3.98         279.63   1650
 
 Segment sizes (sample counts):
   Enterprise  :   150 customers  (5.0% of base)
   SMB         : 1,200 customers  (40.0% of base)
   Startup     : 1,650 customers  (55.0% of base)
 
-Aggregate churn (hidden by averaging): 9.2%
+Aggregate churn (hidden by averaging): 9.1%
 True picture per segment:
   Enterprise  : 0.0% churn
-  SMB         : 12.7% churn
-  Startup     : 7.5% churn
+  SMB         : 11.8% churn
+  Startup     : 8.1% churn
 
 Saved: output/sca_task1_churn_by_segment.html/.png
 
 ------------------------------------------------------------
 TASK 2: Summary Statistics Table with Rankings
 ------------------------------------------------------------
+                     avg_ltv  ltv_rank  churn_rate  churn_rank
+customer_type                                                 
+Enterprise     145605.308200         1    0.000000           1
+SMB              7983.282292         2    0.117500           3
+Startup          1990.903236         3    0.080606           2
 
 Formatted Segment Summary Table:
-   Segment Customers     Avg LTV  LTV Rank Churn Rate  Churn Rank Avg Retention  Retention Rank Avg Tickets  Ticket Rank
-Enterprise       150 $   143,718         1       0.0%           1      912 days               1        1.02            1
-       SMB     1,200 $     8,088         2      12.7%           3      422 days               2        6.05            3
-   Startup     1,650 $     1,970         3       7.5%           2      280 days               3        3.91            2
+   Segment Customers     Avg LTV  LTV Rank Churn Rate  Churn Rank Avg Retention  Ret Rank Avg Tickets  Ticket Rank
+Enterprise       150 $   145,605         1       0.0%           1      886 days         1        1.03            1
+       SMB     1,200 $     7,983         2      11.8%           3      415 days         2        5.97            3
+   Startup     1,650 $     1,991         3       8.1%           2      280 days         3        3.98            2
 
 Key ranking observations:
-  Highest LTV     -> Enterprise  ($143,718)
-  Highest Churn   -> SMB  (12.7%)
-  Best Retention  -> Enterprise (912 days)
+  Highest LTV    -> Enterprise  ($145,605)
+  Highest Churn  -> SMB  (11.8%)
+  Best Retention -> Enterprise (886 days)
 
 Saved: output/sca_task2_summary_table.html/.png
 
 ------------------------------------------------------------
 TASK 3: Visual Comparison Heatmap
 ------------------------------------------------------------
-
-Saved: output/sca_task3_heatmap.html/.png
+Saved: output/segment_heatmap.png  (matplotlib/seaborn)
+Saved: output/sca_task3_heatmap.html/.png  (Plotly interactive)
 Heatmap uses RdYlGn scale — GREEN = healthy metric, RED = risk metric.
 Churn Rate and Support Tickets are inverted so green = low churn / low tickets.
 
@@ -70,21 +75,19 @@ Churn Rate and Support Tickets are inverted so green = low churn / low tickets.
 TASK 4: Top & Bottom Performer Analysis
 ------------------------------------------------------------
 
-HIGHEST VALUE SEGMENT  : Enterprise   -> Avg LTV = $   143,718
-LOWEST VALUE SEGMENT   : Startup      -> Avg LTV = $     1,970
+HIGHEST VALUE: Enterprise = $145,605
+HIGHEST CHURN: SMB = 11.8%
+BEST RETENTION: Enterprise
 
-HIGHEST CHURN SEGMENT  : SMB          -> Churn Rate = 12.7%
-LOWEST CHURN SEGMENT   : Enterprise   -> Churn Rate = 0.0%
+LOWEST VALUE SEGMENT  : Startup      -> Avg LTV = $     1,991
+LOWEST CHURN SEGMENT  : Enterprise   -> Churn Rate = 0.0%
+WORST RETENTION SEG   : Startup      -> Avg Retention = 280 days
+MOST SUPPORT LOAD     : SMB          -> Avg Tickets = 5.97 / customer
 
-BEST RETENTION SEGMENT : Enterprise   -> Avg Retention = 912 days
-WORST RETENTION SEGMENT: Startup      -> Avg Retention = 280 days
-
-MOST SUPPORT LOAD      : SMB          -> Avg Tickets = 6.05 / customer
-
-REVENUE CONTRIBUTION (LTV × Count):
-  Enterprise  :  62.5%  ███████████████████████████████
-  SMB         :  28.1%  ██████████████
-  Startup     :   9.4%  ████
+REVENUE CONTRIBUTION (LTV x Count):
+  Enterprise  :  62.9%  ███████████████████████████████
+  SMB         :  27.6%  █████████████
+  Startup     :   9.5%  ████
 
 Saved: output/sca_task4_performer_analysis.html/.png
 
@@ -92,68 +95,35 @@ Saved: output/sca_task4_performer_analysis.html/.png
 TASK 5: Business-Facing Segment Insights
 ------------------------------------------------------------
 
-+====================================================================+
-|       SEGMENT STRATEGY SUMMARY — CoursePulse / Kalvium            |
-|       Member 2: Sreedhil Pavishanker B (Data Analyst)             |
-+====================================================================+
+SEGMENT STRATEGY SUMMARY:
 
-ENTERPRISE  — 150 customers  (5% of base)
-  Avg LTV        : $   143,718   |  Churn Rate  : 0.0%
-  Avg Retention  : 912 days         |  Avg Tickets : 1.02
-  Revenue share  : 62.5%
+Enterprise (5% of base, $145,605 LTV, 0% churn):
+- Highest value, lowest churn. Averaging $145,605 LTV with only
+  0.0% churn and 886 days average retention.
+- Despite being only 5% of the customer base, they represent
+  ~63% of total estimated revenue.
+- Action: Maintain premium support (low ticket volume is intentional).
+  Invest in dedicated Customer Success Managers; run quarterly Executive
+  Business Reviews to lock in multi-year contracts and grow expansion revenue.
 
-  Observation: Enterprise is the highest-value, lowest-churn segment, averaging
-  $143,718 LTV and retaining customers for 912 days on average.
-  Despite being only 5% of the customer base, they represent
-  62.5% of total estimated revenue.
-
-  Action: Maintain premium support (low ticket volume is a feature, not an accident).
-  Invest in dedicated Customer Success Managers. Run quarterly Executive Business
-  Reviews to lock in multi-year contracts and grow expansion revenue.
-
-----------------------------------------------------------------------
-
-SMB  — 1,200 customers  (40% of base)
-  Avg LTV        : $     8,088   |  Churn Rate  : 12.7%
-  Avg Retention  : 422 days         |  Avg Tickets : 6.05
-  Revenue share  : 28.1%
-
-  Observation: SMB has the HIGHEST churn at 12.7% and the most support
-  tickets (6.05/customer), signalling friction in onboarding or product fit.
-  Retaining even 2% more of this segment would add significant revenue given
+SMB (40% of base, $7,983 LTV, 12% churn):
+- Middle value, high churn risk. SMB has the HIGHEST churn at 11.8%
+  with the most support tickets (6/customer), signalling friction
+  in onboarding or product fit.
+- Retaining even 2% more of this segment would add significant revenue given
   their 40% share of the customer base.
+- Action: Improve onboarding, introduce a lighter-weight self-serve support
+  tier. Set automated churn-risk alerts at day 60 and 120 post sign-up and
+  trigger proactive outreach before cancellation.
 
-  Action: HIGH PRIORITY retention programme. Rebuild the onboarding flow using
-  SMB-specific use cases. Introduce a lighter-weight support tier with self-serve
-  docs and in-app guidance. Set automated churn-risk alerts at day 60 and day 120
-  post sign-up, and trigger proactive outreach before cancellation.
-
-----------------------------------------------------------------------
-
-STARTUP  — 1,650 customers  (55% of base)
-  Avg LTV        : $     1,970    |  Churn Rate  : 7.5%
-  Avg Retention  : 280 days         |  Avg Tickets : 3.91
-  Revenue share  : 9.4%
-
-  Observation: Startups are the largest segment (55% of users) but
-  generate the lowest LTV ($1,970) with a moderate 8% churn rate.
-  They retain for only 280 days on average — often outgrowing or abandoning
-  before hitting a billing event.
-
-  Action: Shift to self-service and education-first motions — tutorials, certification
+Startup (55% of base, $1,991 LTV, 8% churn):
+- Lowest value, moderate churn. Startups are the largest segment
+  (55% of users) but generate the lowest LTV ($1,991)
+  with a 8.1% churn rate; they retain only 280 days on average.
+- Action: Self-service and education-focused motion — tutorials, certification
   paths, and community resources that add value without adding support costs.
-  Introduce usage-based pricing triggers to monetise growth before startups leave.
-  Long-term goal: convert high-engagement Startups into SMB accounts as they scale.
-
-----------------------------------------------------------------------
-
-KEY TAKEAWAY:
-  Aggregate churn = 9.2%  (masks all three problems)
-  Fixing SMB churn alone (even halving it to 6.3%) would improve
-  overall churn to ~6.7%
-  — a bigger win than any product feature for the quarter.
-
-+====================================================================+
+  Introduce usage-based pricing to monetise growth, and identify high-engagement
+  Startups to convert into SMB accounts as they scale.
 
 Saved: output/sca_segment_strategy_report.txt
 Saved: output/sca_segment_dashboard.html/.png
@@ -162,7 +132,8 @@ Saved: output/sca_segment_dashboard.html/.png
 ANALYSIS COMPLETE — All outputs written to output/
   Task 1 -> output/sca_task1_churn_by_segment.html / .png
   Task 2 -> output/sca_task2_summary_table.html / .png
-  Task 3 -> output/sca_task3_heatmap.html / .png
+  Task 3 -> output/segment_heatmap.png (seaborn)
+           output/sca_task3_heatmap.html / .png (Plotly)
   Task 4 -> output/sca_task4_performer_analysis.html / .png
   Task 5 -> output/sca_segment_strategy_report.txt
   Bonus  -> output/sca_segment_dashboard.html / .png
