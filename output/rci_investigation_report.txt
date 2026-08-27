@@ -1,0 +1,54 @@
+
+===================================================================
+ROOT CAUSE INVESTIGATION REPORT
+SYNERGY CoursePulse — Kalvium Community
+Member 2: Sreedhil Pavishanker B (Data Analyst)
+===================================================================
+
+OBSERVATION:
+- Revenue dropped ~50% on 2026-08-20
+- Timeline: 14:00–15:00 UTC (60-minute window)
+- Before-window success rate : 98.5%
+- During-window success rate : 45.5%  (-53.0%)
+- After-window success rate  : 97.3%  (recovered)
+
+AFFECTED SCOPE:
+- Payment method : credit_card (95% failure rate during window)
+- Other methods  : debit_card, bank_transfer, crypto (<2% failure — unaffected)
+- Customer types : Enterprise & SMB predominantly affected (high CC usage)
+- Startup        : less impacted (higher debit/crypto usage)
+- Region         : uniform across all geographies (global processor issue)
+
+ANALYSIS:
+- Credit card failure INSIDE  window : 95.9%
+- Credit card failure OUTSIDE window : 1.8%
+- Other payment failure inside window: 3.9%
+- Dominant error message             : 'Stripe API timeout' in 52.8% of failures
+- Failed credit card transactions    : 211
+- Estimated revenue lost             : $24,909
+
+HYPOTHESIS  (Confidence: HIGH):
+  Stripe (credit card processor) experienced a ~30-minute outage
+  (approx. 14:15–14:45 UTC) affecting all credit card
+  transactions globally.  Non-Stripe payment methods were completely
+  unaffected.  The 'Stripe API timeout' error, recorded in 52.8%
+  of failed transactions, matches Stripe's own documented outage window.
+
+ROOT CAUSE: External payment processor failure (Stripe outage)
+            NOT a product bug, NOT seasonal, NOT competitor action.
+
+RECOMMENDED ACTIONS:
+  1. Add a redundant payment processor (e.g., Adyen) as automatic failover
+     for credit card transactions when Stripe latency > 2s.
+  2. Implement real-time payment-processor health monitoring with PagerDuty
+     alerts when success rate drops below 90% for > 5 consecutive minutes.
+  3. Surface a user-friendly message during outages: "Try another payment
+     method while we resolve a temporary issue."
+  4. Conduct a post-mortem within 48 hours; share with stakeholders.
+
+ESTIMATED IMPACT:
+  - Stripe SLA outage frequency  : ~1× per year
+  - Current revenue loss per event: ~$24,909
+  - With redundancy (5% leakage) : ~$1,245
+  - Annual savings estimate       : ~$23,663
+===================================================================
