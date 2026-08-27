@@ -1,0 +1,7 @@
+logged_at,anomaly_date,metric,value,expected_min,expected_max,expected_range,z_score,severity,status,notes
+2026-08-27 11:34:51.627196,2026-08-11,transaction_count,35.0,315.2,680.76,315 - 681,5.066,CRITICAL,OPEN,
+2026-08-27 11:34:51.627196,2026-06-24,transaction_count,697.0,315.2,680.76,315 - 681,2.178,HIGH,OPEN,
+2026-08-27 11:34:51.627196,2026-06-30,daily_revenue,2200.0,5000.0,50000.0,5000 - 50000,,HIGH,OPEN,threshold-breach only
+2026-08-27 11:34:51.627196,2026-08-14,daily_revenue,6070.38,7043.38,12995.27,"$7,043 - $12,995",2.654,HIGH,OPEN,
+2026-08-27 11:34:51.627196,2026-08-19,daily_revenue,7018.65,7043.38,12995.27,"$7,043 - $12,995",2.017,HIGH,OPEN,
+2026-08-27 11:34:51.627196,2026-08-29,transaction_count,717.0,315.2,680.76,315 - 681,2.397,HIGH,OPEN,
