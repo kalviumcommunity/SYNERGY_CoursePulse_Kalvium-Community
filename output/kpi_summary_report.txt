@@ -1,0 +1,26 @@
+KPI STANDARDIZATION REPORT
+Member 2: Sreedhil Pavishanker B (Data Analyst)
+======================================================================
+
+COMPUTED KPIs
+  MAU                   : 9,411
+  Revenue per Customer  : $181.85
+  Churn Rate            : 65.7%
+  Payment Success Rate  : 98.0%
+  CAC                   : $251.68
+  Conversion Rate       : 56.0%
+
+VALIDATION RESULTS
+                      kpi    actual  target_min  target_max  unit            owner status
+     monthly_active_users 9411.0000     5000.00     6000.00 count  Product Manager  ALERT
+     revenue_per_customer  181.8500       90.00      110.00   USD          Finance  ALERT
+               churn_rate    0.6571        0.00        0.05 ratio Customer Success  ALERT
+     payment_success_rate    0.9795        0.95        1.00 ratio      Engineering   PASS
+customer_acquisition_cost  251.6800        0.00       50.00   USD        Marketing  ALERT
+          conversion_rate    0.5600        0.18        0.25 ratio  Product Manager  ALERT
+
+REVENUE DECOMPOSITION
+  Total: $3,598,237
+    SMB: $1,712,105
+    Enterprise: $1,369,810
+    Startup: $516,323
