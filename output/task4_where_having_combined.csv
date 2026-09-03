@@ -1,0 +1,4 @@
+customer_type,segment_customers,segment_revenue,avg_order_value
+B2C,387,248227.35,163.85
+B2B,236,170242.47,175.69
+SMB,167,105959.07,157.68
