@@ -1,0 +1,4 @@
+join_type,row_count,description
+INNER JOIN,4950,Matched customers & orders only
+LEFT JOIN,5059,All customers + matched orders (NULLs for 0-order customers)
+FULL OUTER JOIN,5109,All customers + all orders (includes orphaned order rows)
