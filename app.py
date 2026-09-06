@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from export_functions import build_default_report, verify_exports
 from upload_preview import render_upload_page
+from filter_page import render_filter_page
 from interactive_charts.plotly_dashboard import (
     interactive_explorer,
     load_orders,
@@ -53,6 +54,7 @@ page = st.sidebar.radio(
         "KPI Dashboard",
         "Export Reports",
         "Upload Preview",
+        "Interactive Filters",
     ],
 )
 
@@ -337,3 +339,6 @@ elif page == "Export Reports":
 
 elif page == "Upload Preview":
     render_upload_page()
+
+elif page == "Interactive Filters":
+    render_filter_page()

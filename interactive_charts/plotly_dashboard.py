@@ -23,6 +23,7 @@ def load_orders() -> pd.DataFrame:
         orders["order_status"].isin(["completed", "shipped", "delivered"])
         & (orders["order_amount"] > 0)
     ].copy()
+    orders["customer_segment"] = orders["customer_segment"].fillna("Unknown")
     return orders
 
 
