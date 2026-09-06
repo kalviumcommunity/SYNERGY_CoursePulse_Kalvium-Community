@@ -1,0 +1,36 @@
+name: Data Validation
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install validation dependency
+        run: pip install pandas
+
+      - name: Build cleaned pipeline dataset
+        run: >-
+          python pipeline.py
+          --input data/raw/orders_5000.csv
+          --customers data/raw/customers_1000.csv
+          --output output/ci-pipeline
+
+      - name: Validate schema and data quality
+        run: python validate_data.py output/ci-pipeline/cleaned_data.csv
+
+      - name: Run validation tests
+        run: python -m unittest scripts/test_validate_data.py
