@@ -6,6 +6,7 @@ from interactive_charts.plotly_dashboard import (
     metric_selector,
     revenue_trend,
 )
+from kpis.kpi_dashboard import render_dashboard
 
 st.set_page_config(page_title="Analytics Dashboard", layout="wide")
 
@@ -47,6 +48,7 @@ page = st.sidebar.radio(
         "Trends and Monitoring",
         "Root Causes and Insights",
         "Interactive Plotly",
+        "KPI Dashboard",
     ],
 )
 
@@ -306,3 +308,6 @@ elif page == "Interactive Plotly":
     st.plotly_chart(revenue_trend(filtered_orders), use_container_width=True)
     st.plotly_chart(metric_selector(filtered_orders), use_container_width=True)
     st.plotly_chart(interactive_explorer(filtered_orders), use_container_width=True)
+
+elif page == "KPI Dashboard":
+    render_dashboard()
