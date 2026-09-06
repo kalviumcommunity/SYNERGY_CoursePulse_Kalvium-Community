@@ -1,0 +1,10 @@
+Metric,Original,Optimized
+Columns selected (Query 1),all columns,7 explicit columns
+Rows in full orders table,5000,5000
+Rows after Query 2 filter,not measured before join,2830
+Intermediate reduction factor,not measured,1.77x
+Filters applied before join (Query 2),No,Yes
+Nesting depth (Query 3),3 nested levels,3 named CTE steps
+Query 1 elapsed ms,1.722,1.176
+Query 2 elapsed ms,1.28,1.241
+Query 3 elapsed ms,2.223,1.929
