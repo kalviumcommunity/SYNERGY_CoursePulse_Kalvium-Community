@@ -1,0 +1,1 @@
+"""Interactive Plotly chart components for the CoursePulse dashboard."""
