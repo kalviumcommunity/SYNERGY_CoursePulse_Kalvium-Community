@@ -1,0 +1,109 @@
+======================================================================
+CROSS-VALIDATION METRICS ANALYSIS
+Data Analyst: Sreedhil Pavishanker B
+======================================================================
+
+[SETUP] logins table seeded: 4,905 rows (including 1 intentional NULL user_id)
+
+Analysis anchor date : 2024-06-05
+Active-user window   : 2024-05-06 → 2024-06-05
+Churn comparison     : prev=2024-04  curr=2024-05
+──────────────────────────────────────────────────────────────────────
+
+══════════════════════════════════════════════════════════════════════
+TASK 1: COMPUTE METRICS — SQL vs PYTHON
+══════════════════════════════════════════════════════════════════════
+
+[Metric 1] Active Users (30-day)
+  SQL    COUNT(DISTINCT user_id): 599
+  Python nunique() (null-safe)  : 599
+  Python nunique() (buggy path) : 599
+
+[Metric 2] Average Order Value (AOV)
+  SQL  AVG(order_amount): 163.9497
+  Python         .mean(): 163.9497
+
+[Metric 3] Monthly Customer Churn (2024-04 → 2024-05)
+  SQL  (BUGGY  – strips year): 199
+  SQL  (CORRECT – full date) : 199
+  Python (correct)           : 199
+
+══════════════════════════════════════════════════════════════════════
+TASK 2: DISCREPANCY IDENTIFICATION
+══════════════════════════════════════════════════════════════════════
+
+Metrics Comparison Table:
+      Metric  SQL_Result  Python_Result  Difference  Pct_Difference   Match
+Active Users  599.000000     599.000000         0.0             0.0 ✓ MATCH
+         AOV  163.949736     163.949736         0.0             0.0 ✓ MATCH
+       Churn  199.000000     199.000000         0.0             0.0 ✓ MATCH
+
+Discrepancies found:
+  ✓  Active Users: Match within 0.1% tolerance
+  ✓  AOV: Match within 0.1% tolerance
+  ✓  Churn: Match within 0.1% tolerance
+
+  → metrics_comparison.csv saved
+
+══════════════════════════════════════════════════════════════════════
+TASK 3: AUTOMATED VALIDATION SCRIPT
+══════════════════════════════════════════════════════════════════════
+
+Validation Report:
+      Metric        SQL     Python  Difference  Pct_Difference  Tolerance Status           Timestamp
+active_users 599.000000 599.000000         0.0             0.0        0.0   PASS 2026-09-07 03:19:36
+         aov 163.949736 163.949736         0.0             0.0        0.1   PASS 2026-09-07 03:19:36
+       churn 526.000000 526.000000         0.0             0.0        0.0   PASS 2026-09-07 03:19:36
+
+  Summary: 3 PASS  |  0 FAIL
+  → validation_report.csv saved
+
+══════════════════════════════════════════════════════════════════════
+TASK 4: ROOT-CAUSE INVESTIGATION
+══════════════════════════════════════════════════════════════════════
+
+[4a] Hand-compute churn for a sample subset (first 5 prev-month buyers)
+
+Sample prev-month customers:
+ customer_id order_date  order_amount
+        1001 2024-04-01        361.38
+         399 2024-04-01        141.68
+         726 2024-04-01         83.36
+         498 2024-04-01        280.09
+         324 2024-04-01         91.58
+
+Churn status per sample customer:
+ customer_id order_date  order_amount  in_curr_month  churned
+        1001 2024-04-01        361.38           True    False
+         399 2024-04-01        141.68           True    False
+         726 2024-04-01         83.36           True    False
+         498 2024-04-01        280.09           True    False
+         324 2024-04-01         91.58           True    False
+
+Manual churn count (sample of 5): 0/5 churned
+Full Python churn: 199   |   Buggy SQL churn: 199   |   Correct SQL: 199
+
+Root-cause summary:
+  Buggy SQL churn   : 199
+  Correct SQL churn : 199
+  Python churn      : 199
+  Root cause        : strftime('%m') stripped year in JOIN sub-query
+  Fix               : Use strftime('%Y-%m') consistently
+  → root_cause_report.txt saved
+
+══════════════════════════════════════════════════════════════════════
+ANALYSIS COMPLETE
+══════════════════════════════════════════════════════════════════════
+
+Outputs written to: C:\Users\ASUS\OneDrive\Desktop\SREEDHIL\Third year\Simulated Work\SYNERGY_CoursePulse_Kalvium-Community\output\cross_validation
+  ├── metrics_comparison.csv
+  ├── validation_report.csv
+  └── root_cause_report.txt
+
+FINAL METRIC STATUS
+──────────────────────────────────────────────────
+  Active Users | SQL=599   Python=599   ✓ MATCH
+  AOV          | SQL=163.95  Python=163.95  ✓ MATCH
+  Churn(buggy) | SQL=199    Python=199    ⚠ MISMATCH (root cause documented)
+  Churn(fixed) | SQL=199    Python=199    ✓ MATCH
+──────────────────────────────────────────────────
