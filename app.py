@@ -5,6 +5,8 @@ from upload_preview import render_upload_page
 from filter_page import render_filter_page
 from session_workflow import render_workflow_page
 from realtime_dashboard import render_realtime_dashboard
+from report_generator import generate_report
+from email_sender import send_report
 from interactive_charts.plotly_dashboard import (
     interactive_explorer,
     load_orders,
@@ -59,6 +61,7 @@ page = st.sidebar.radio(
         "Interactive Filters",
         "Session Workflow",
         "Real-Time Dashboard",
+        "Insight Sharing",
     ],
 )
 
@@ -352,3 +355,18 @@ elif page == "Session Workflow":
 
 elif page == "Real-Time Dashboard":
     render_realtime_dashboard()
+
+elif page == "Insight Sharing":
+    st.title("Insight Sharing & Email Reports")
+    report_data = load_orders()
+    report_text = generate_report(report_data, pd.Timestamp.now().date())
+    st.subheader("Report Preview")
+    st.text(report_text)
+    recipient = st.text_input("Recipient Email")
+    if st.button("Send Report"):
+        if not recipient:
+            st.error("Enter a recipient email.")
+        elif send_report(report_text, recipient):
+            st.success(f"Report sent to {recipient}")
+        else:
+            st.error("Report delivery failed or email credentials are not configured. Check the logs and dashboard directly.")
