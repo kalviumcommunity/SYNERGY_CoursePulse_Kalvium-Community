@@ -4,6 +4,7 @@ from export_functions import build_default_report, verify_exports
 from upload_preview import render_upload_page
 from filter_page import render_filter_page
 from session_workflow import render_workflow_page
+from realtime_dashboard import render_realtime_dashboard
 from interactive_charts.plotly_dashboard import (
     interactive_explorer,
     load_orders,
@@ -57,6 +58,7 @@ page = st.sidebar.radio(
         "Upload Preview",
         "Interactive Filters",
         "Session Workflow",
+        "Real-Time Dashboard",
     ],
 )
 
@@ -347,3 +349,6 @@ elif page == "Interactive Filters":
 
 elif page == "Session Workflow":
     render_workflow_page()
+
+elif page == "Real-Time Dashboard":
+    render_realtime_dashboard()
