@@ -8,6 +8,8 @@ import json
 import pandas as pd
 import plotly.express as px
 import streamlit as st
+from alert_config import ALERT_THRESHOLDS
+from alert_monitor import render_alerts
 
 
 DATE_ALIASES = ("date", "order_date", "timestamp", "created_at")
@@ -66,7 +68,20 @@ def calculate_reactive_kpis(dataframe: pd.DataFrame) -> dict[str, float | int]:
         "records": int(len(dataframe)),
         "customers": int(dataframe["dashboard_customer"].nunique()),
         "quality": float(100 - null_percentage),
+        "churn_rate": calculate_churn_rate(dataframe),
     }
+
+
+def calculate_churn_rate(dataframe: pd.DataFrame) -> float:
+    """Estimate churn as prior-period customers absent from the latest period."""
+    if dataframe.empty:
+        return 0.0
+    periods = dataframe["dashboard_date"].dt.to_period("M")
+    latest = periods.max()
+    prior = latest - 1
+    current_customers = set(dataframe.loc[periods == latest, "dashboard_customer"])
+    prior_customers = set(dataframe.loc[periods == prior, "dashboard_customer"])
+    return round(len(prior_customers - current_customers) / len(prior_customers) * 100, 2) if prior_customers else 0.0
 
 
 def render_realtime_dashboard() -> None:
@@ -105,6 +120,8 @@ def render_realtime_dashboard() -> None:
         return
 
     kpis = calculate_reactive_kpis(filtered)
+    st.subheader("Threshold Monitoring")
+    render_alerts(kpis, ALERT_THRESHOLDS)
     cards = st.columns(5)
     cards[0].metric("Revenue", f"${kpis['revenue']:,.2f}")
     cards[1].metric("Average Order", f"${kpis['average_order']:,.2f}")
