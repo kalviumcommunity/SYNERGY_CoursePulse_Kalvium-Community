@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from export_functions import build_default_report, verify_exports
 from interactive_charts.plotly_dashboard import (
     interactive_explorer,
     load_orders,
@@ -49,6 +50,7 @@ page = st.sidebar.radio(
         "Root Causes and Insights",
         "Interactive Plotly",
         "KPI Dashboard",
+        "Export Reports",
     ],
 )
 
@@ -311,3 +313,22 @@ elif page == "Interactive Plotly":
 
 elif page == "KPI Dashboard":
     render_dashboard()
+
+elif page == "Export Reports":
+    st.title("Insight Export & Report Generation")
+    st.write("Generate timestamped CSV, PDF, HTML, and metadata files from the validated analysis data.")
+    if st.button("Export Analysis"):
+        report_dir = build_default_report()
+        verify_exports(report_dir)
+        st.success(f"Report generated: {report_dir.name}")
+        for filename, mime in [
+            ("cleaned_data.csv", "text/csv"),
+            ("summary_report.pdf", "application/pdf"),
+            ("interactive_report.html", "text/html"),
+            ("README.md", "text/markdown"),
+        ]:
+            path = report_dir / filename
+            st.download_button(
+                f"Download {filename}", path.read_bytes(), file_name=filename, mime=mime,
+                key=f"download_{filename}",
+            )

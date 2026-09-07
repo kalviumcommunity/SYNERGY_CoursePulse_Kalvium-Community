@@ -7,3 +7,4 @@ plotly==5.23.0
 seaborn==0.13.2
 chardet>=5.0.0
 sqlalchemy>=2.0.0
+reportlab>=4.0.0
