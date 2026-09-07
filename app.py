@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from export_functions import build_default_report, verify_exports
+from upload_preview import render_upload_page
 from interactive_charts.plotly_dashboard import (
     interactive_explorer,
     load_orders,
@@ -51,6 +52,7 @@ page = st.sidebar.radio(
         "Interactive Plotly",
         "KPI Dashboard",
         "Export Reports",
+        "Upload Preview",
     ],
 )
 
@@ -332,3 +334,6 @@ elif page == "Export Reports":
                 f"Download {filename}", path.read_bytes(), file_name=filename, mime=mime,
                 key=f"download_{filename}",
             )
+
+elif page == "Upload Preview":
+    render_upload_page()
