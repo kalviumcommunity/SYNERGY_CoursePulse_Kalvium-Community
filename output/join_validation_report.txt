@@ -1,0 +1,108 @@
+TASK 1: LEFT JOIN Row Count Validation → PASSED
+  Customers: 1,000
+  Aggregated after LEFT JOIN: 1,000 (same as customers)
+
+TASK 2: Unmatched Key Detection → COMPLETED
+  Customers without orders: 109
+  Orphaned orders: 50
+
+TASK 3: Join Type Comparison → PASSED
+  INNER JOIN        :    4,950 rows
+  LEFT JOIN         :    5,059 rows
+  FULL OUTER JOIN   :    5,109 rows
+
+TASK 4: Multi-Table Join (4 tables) → VALIDATED
+  Enterprise line-items: 3,023 rows
+  Duplication check: PASSED (no double-counting)
+
+TASK 5: Join Documentation → COMPLETE
+
+
+╔══════════════════════════════════════════════════════════════════════╗
+║              JOIN STRATEGY DOCUMENTATION                            ║
+║              CoursePulse / Kalvium Community Analytics              ║
+║              Author : Sreedhil Pavishanker B (Data Analyst)        ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+TABLE INVENTORY
+═══════════════
+  Table         Rows      Primary Key  Foreign Key(s)
+  ─────────     ───────   ──────────── ──────────────────
+  customers       1,000   customer_id  —
+  orders          5,000   order_id     customer_id → customers
+  order_items     7,986   item_id      order_id    → orders
+  products          500   product_id   —
+
+─────────────────────────────────────────────────────────────────────
+Decision 1: customers LEFT JOIN orders
+─────────────────────────────────────────────────────────────────────
+  Purpose       : Get all customers with their complete order history.
+  Join type     : LEFT (keep all customers, even those with no orders).
+  Row count     : 1,000 customers → 5,059 rows (one row per order placed).
+  Multiplication: Each customer appears N times (N = number of orders).
+  Unmatched     : 109 customers have no orders — retained with NULL order fields.
+  Business use  : Customer Lifetime Value calculation, activation-gap
+                   segmentation, churn risk identification.
+  Risk          : Aggregating SUM(order_amount) with GROUP BY customer_id
+                   is safe ONLY after the join; do NOT count rows naively.
+  Validation    : Aggregated result = 1,000 rows ✓  (one per customer).
+
+─────────────────────────────────────────────────────────────────────
+Decision 2: orders LEFT JOIN order_items
+─────────────────────────────────────────────────────────────────────
+  Purpose       : Expand orders to their individual line items for
+                   product-level revenue and inventory analysis.
+  Join type     : LEFT (keep all orders, even those with no items — data
+                   quality anomaly alert if such orders exist).
+  Row count     : 5,000 orders → 7,986 line items (avg items/order ≈ 1.6).
+  Unmatched     : Ideally 0 — all orders should have items.
+                   If non-zero, flag for data quality investigation.
+  Business use  : Product revenue ranking, basket analysis, inventory
+                   burn-rate, promotion effectiveness measurement.
+  Risk          : Summing order_amount from the 'orders' table after
+                   this join WILL overcount; always aggregate at the
+                   correct grain (order_items.quantity × unit_price).
+
+─────────────────────────────────────────────────────────────────────
+Decision 3: Full 3-table join (customers → orders → order_items)
+─────────────────────────────────────────────────────────────────────
+  Purpose       : End-to-end customer context — who bought what and
+                   how much, at line-item granularity.
+  Row count     : 1,000 → 5,059 → 8,014 rows.
+  Risk          : Highest fan-out level. Revenue aggregation MUST use
+                   (oi.quantity × oi.unit_price) NOT o.order_amount to
+                   avoid double-counting when an order has multiple items.
+  Solution      : Always aggregate at the item grain or use sub-queries
+                   that pre-aggregate at order level before joining.
+  Business use  : Full-funnel attribution, customer-product affinity
+                   matrix, cohort revenue waterfall.
+
+─────────────────────────────────────────────────────────────────────
+Decision 4: 4-table join (+ products)
+─────────────────────────────────────────────────────────────────────
+  Purpose       : Enrich line-items with product metadata (name, category,
+                   list price) for segment and assortment analysis.
+  Join type     : LEFT (retain orphaned items even if product was deleted).
+  Row count     : Same as 3-table join (8,014) — products is a 1-to-N
+                   lookup that does not create additional fan-out.
+  Risk          : Stale product records; always validate unit_price in
+                   order_items vs. products.unit_price for consistency.
+
+─────────────────────────────────────────────────────────────────────
+ORPHANED RECORDS ANALYSIS
+─────────────────────────────────────────────────────────────────────
+  Orphaned orders (no customer match): 50
+  ⚠️  ACTION REQUIRED: Investigate missing customer records.
+  Recommendation: Use FULL OUTER JOIN in ETL validation pipelines to
+  surface all orphaned rows automatically before they reach analytics.
+
+─────────────────────────────────────────────────────────────────────
+VALIDATION SUMMARY
+─────────────────────────────────────────────────────────────────────
+  [✓] LEFT JOIN row counts match expectations
+  [✓] Aggregated customer count = source customer count (1,000)
+  [✓] INNER ≤ LEFT ≤ FULL OUTER join sizes
+  [✓] Multi-table join line_total == direct order_items sum (no duplication)
+  [✓] Unmatched keys identified, quantified, and flagged for remediation
+
+═══════════════════════════════════════════════════════════════════════
