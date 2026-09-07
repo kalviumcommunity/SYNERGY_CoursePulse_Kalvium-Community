@@ -1,5 +1,11 @@
 import streamlit as st
 import pandas as pd
+from interactive_charts.plotly_dashboard import (
+    interactive_explorer,
+    load_orders,
+    metric_selector,
+    revenue_trend,
+)
 
 st.set_page_config(page_title="Analytics Dashboard", layout="wide")
 
@@ -40,6 +46,7 @@ page = st.sidebar.radio(
         "User Behaviour",
         "Trends and Monitoring",
         "Root Causes and Insights",
+        "Interactive Plotly",
     ],
 )
 
@@ -283,3 +290,19 @@ elif page == "Root Causes and Insights":
     with action_right:
         with st.expander("Recommended Actions"):
             st.write("Prioritized actions, owners, and expected impact placeholder")
+
+elif page == "Interactive Plotly":
+    st.title("Interactive Plotly Explorer")
+    st.write("Explore valid CoursePulse orders with hover details, metric controls, and native Plotly navigation.")
+    interactive_orders = load_orders()
+    min_date = interactive_orders["order_date"].min().date()
+    max_date = interactive_orders["order_date"].max().date()
+    start_date, end_date = st.sidebar.date_input("Order date range", (min_date, max_date), min_value=min_date, max_value=max_date)
+    filtered_orders = interactive_orders[
+        (interactive_orders["order_date"].dt.date >= start_date)
+        & (interactive_orders["order_date"].dt.date <= end_date)
+    ]
+    st.caption(f"Showing {len(filtered_orders):,} valid orders from {start_date} to {end_date}.")
+    st.plotly_chart(revenue_trend(filtered_orders), use_container_width=True)
+    st.plotly_chart(metric_selector(filtered_orders), use_container_width=True)
+    st.plotly_chart(interactive_explorer(filtered_orders), use_container_width=True)
