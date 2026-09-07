@@ -1,0 +1,47 @@
+{
+  "revenue": {
+    "label": "Revenue",
+    "value": "$0.00M",
+    "raw": 0.0,
+    "delta_pct": -100.0,
+    "delta_str": "-100.0%",
+    "trend": "down",
+    "justification": "Primary business health indicator; answers 'Are we growing revenue?'"
+  },
+  "active_customers": {
+    "label": "Active Customers",
+    "value": "0",
+    "raw": 0,
+    "delta_pct": -100.0,
+    "delta_str": "-100.0%",
+    "trend": "down",
+    "justification": "Measures market traction; answers 'How many customers actually transacted?'"
+  },
+  "avg_order_value": {
+    "label": "Avg Order Value",
+    "value": "$nan",
+    "raw": NaN,
+    "delta_pct": NaN,
+    "delta_str": "nan%",
+    "trend": "down",
+    "justification": "Measures spend depth; answers 'Are customers buying more per transaction?'"
+  },
+  "churn_rate": {
+    "label": "Churn Rate",
+    "value": "100.0%",
+    "raw": 100.0,
+    "delta_pct": 0.0,
+    "delta_str": "+0.0%",
+    "trend": "down",
+    "justification": "Retention metric; answers 'Are we losing customers between periods?'"
+  },
+  "conversion_rate": {
+    "label": "Conversion Rate",
+    "value": "0.0%",
+    "raw": 0,
+    "delta_pct": -100.0,
+    "delta_str": "-100.0%",
+    "trend": "down",
+    "justification": "Operational efficiency metric; answers 'What share of orders are successfully fulfilled?'"
+  }
+}
