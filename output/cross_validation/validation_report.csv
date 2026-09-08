@@ -1,0 +1,4 @@
+Metric,SQL,Python,Difference,Pct_Difference,Tolerance,Status,Timestamp
+active_users,599.0,599.0,0.0,0.0,0.0,PASS,2026-09-07 03:19:36
+aov,163.949736,163.949736,0.0,0.0,0.1,PASS,2026-09-07 03:19:36
+churn,526.0,526.0,0.0,0.0,0.0,PASS,2026-09-07 03:19:36
