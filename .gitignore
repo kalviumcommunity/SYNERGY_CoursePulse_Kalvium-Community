@@ -2,3 +2,6 @@
 __pycache__/
 *.pyc
 .DS_Store
+# Secrets — never commit
+.env
+.streamlit/secrets.toml
