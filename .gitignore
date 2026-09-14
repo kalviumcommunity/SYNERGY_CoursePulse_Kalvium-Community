@@ -5,3 +5,5 @@ __pycache__/
 # Secrets — never commit
 .env
 .streamlit/secrets.toml
+# Runtime-generated exports (user-clicked reports; CI still versions output/pipeline)
+output/reports/
