@@ -6,10 +6,34 @@ import logging
 import os
 import smtplib
 from email.message import EmailMessage
+from pathlib import Path
 from typing import Callable
 
 
 LOGGER = logging.getLogger(__name__)
+
+ENV_FILE = Path(__file__).resolve().parent / ".env"
+
+
+def _load_env_file(path: Path = ENV_FILE) -> None:
+    """Populate missing environment variables from a local .env file.
+
+    Existing environment variables always win, so real shell exports and
+    Streamlit Cloud secrets are never overridden. Python's smtplib does not
+    read .env files by itself, so this keeps local runs working without
+    adding a python-dotenv dependency.
+    """
+    if not path.exists():
+        return
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, _, value = line.partition("=")
+        os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
+
+
+_load_env_file()
 
 
 def send_report(
